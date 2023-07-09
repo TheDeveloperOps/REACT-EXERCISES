@@ -266,4 +266,4 @@
 </html>
 ```
 *Output for the above*
-![Alt text](image-5.png)
+![Hex code gif](https://github.com/TheDeveloperOps/REACT-EXERCISES/assets/82383377/8840d031-1c82-4eba-82a1-e67719434ef0)
