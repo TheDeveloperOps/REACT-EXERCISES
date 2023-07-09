@@ -267,3 +267,82 @@
 ```
 *Output for the above*
 ![Alt text](image-5.png)
+
+**4. Use functional component to design the following user card.**
+![Alt text](image-8.png)
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body{
+            background-color: rgb(184, 187, 190);
+        }
+        .container{
+            border-radius: 10px;
+            height: 470px;
+            width: 80%;
+            display: block;
+            background-color: rgb(239, 243, 243);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        img{
+            border-radius: 50;
+        }
+        .boxed *{
+            text-align: center;
+            margin-left: 20px;
+            float: left;
+            margin-top: 10px;
+            border-radius: 3px;
+            background-color: rgb(37, 203, 224);
+            border: 2px solid rgb(37, 203, 224) ;
+            width: 70px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app"></div>
+    <script type="text/babel">
+        const ShowCard=()=>{
+            return(
+                <div>
+                    <img src="./jagan.jpg" width={150} style={{borderRadius:'50%',paddingTop:25,paddingLeft:30}}/>
+                    <h1  style={{fontSize:30,paddingLeft:40}}>JAGAN T<img src='./tick.png' width={25} style={{paddingLeft:10}}/></h1>
+                    <h2 style={{fontSize:15,paddingLeft:20}}> MERN STACK DEVELOPER</h2>
+                    <h1 style={{fontSize:30,paddingLeft:40}}>SKILLS</h1>
+                    <div className='boxed'>
+                    <div>HTML</div><div>CSS</div><div>JS</div><div>REACT</div><div>PYTHON</div><div>MYSQL</div><div>JAVA</div><div>REDUX</div>
+                    </div>
+                    </div>
+            )
+        }
+        class UserCard extends React.Component{
+            render(){
+                return(
+                    <div className="container" >
+                        <ShowCard/>
+                    </div>
+                );
+            }
+        }
+        const rootElement = ReactDOM.createRoot(document.getElementById('app'))
+        rootElement.render(<UserCard/>)   
+
+    </script>
+</body>
+</html>
+```
+
+*Output of the above*
+![Alt text](image-6.png)
