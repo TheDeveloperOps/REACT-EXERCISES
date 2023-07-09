@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .container{
+            position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="app"></div>
+    <script type="text/babel">
+        const HexaCode=(props)=>{
+            const styleOne = {
+                textAlign:'center',
+                background: props.color[0],
+                height: 40,
+                width: 600,
+                fontSize: 32,
+                marginTop:10    
+            }
+            const styleTwo = {
+                textAlign:'center',
+                background: props.color[1],
+                height: 40,
+                width: 600,
+                fontSize: 32,
+                marginTop:10    
+            }
+            const styleThree = {
+                textAlign:'center',
+                background: props.color[2],
+                height: 40,
+                width: 600,
+                fontSize: 32,
+                marginTop:10    
+            }
+            const styleFour = {
+                textAlign:'center',
+                background: props.color[3],
+                height: 40,
+                width: 600,
+                fontSize: 32,
+                marginTop:10    
+            }
+            const styleFive = {
+                textAlign:'center',
+                background: props.color[4],
+                height: 40,
+                width: 600,
+                fontSize: 32,
+                marginTop:10    
+            }
+            const styleSix = {
+                textAlign:'center',
+                background: props.color[4],
+                height: 40,
+                width: 600,
+                fontSize: 32,
+                marginTop:10    
+            }
+            return(
+                <div>
+                    <h1>Random Hex code </h1>
+                    <div style={styleOne}>{props.color[0]}</div>
+                    <div style={styleTwo}>{props.color[1]}</div>
+                    <div style={styleThree}>{props.color[2]}</div>
+                    <div style={styleFour}>{props.color[3]}</div>
+                    <div style={styleFive}>{props.color[4]}</div>
+                    <div style={styleSix}>{props.color[5]}</div>
+               
+                </div>
+                
+            )
+        }
+        const HexaGenerator=()=>{
+            let letters = "0123456789ABCDEF";
+            let colorList = [];
+
+            for (let i = 0; i < 6; i++) {
+            let color = '#';
+
+            for (let j = 0; j < 6; j++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            if (!colorList.includes(color)) {
+                colorList.push(color);
+            } else {
+                i--; // Generate a new color if the current one already exists in the list
+            }
+            }
+                return(
+                    <div className='container'>
+                        <HexaCode color={colorList}/>
+                    </div>
+                )
+        }
+        const rootElement = ReactDOM.createRoot(document.getElementById('app'))
+        rootElement.render(<HexaGenerator/>)
+        
+    </script>
+</body>
+</html>
