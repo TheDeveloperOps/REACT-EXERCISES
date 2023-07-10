@@ -266,7 +266,8 @@
 </html>
 ```
 *Output for the above*
-![Alt text](image-5.png)
+![Hex code gif](https://github.com/TheDeveloperOps/REACT-EXERCISES/assets/82383377/43505277-7191-493f-807a-6e52a4744e30)
+
 
 **4. Use functional component to design the following user card.**
 ![Alt text](image-8.png)
