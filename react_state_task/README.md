@@ -169,3 +169,4 @@
 *Output of the above*
 ![Alt text](image-3.png)
 ![Alt text](image-4.png)
+![bg changing using state](https://github.com/TheDeveloperOps/REACT-EXERCISES/assets/82383377/0bf9abf5-5fac-45f6-b56c-b595fe7a7ab0)
