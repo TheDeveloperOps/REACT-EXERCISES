@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chela+One&display=swap" rel="stylesheet">
+    <title>COUNTRY API</title>
+    <style>
+        h1{
+            margin-top: 1px;
+            text-align: center;
+            font-family: 'VT323', monospace;
+            font-size: 100px;
+        }
+        #app{
+            margin-top: 20px;
+            border-radius: 10px;
+            height: 80%;
+            width: 40%;
+            display: block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: wheat;
+        }
+        .container{
+            margin-top: 40px;
+            align-items: center;
+            text-align: center;
+        }
+        .text{
+            font-size: 30px; 
+            font-family: 'Chela One', cursive;
+            margin-top: 20px;
+            margin-left: auto;
+        }
+        .bn47 {
+        margin-top: auto;
+        position: relative;
+        padding: 1rem 2rem 0.5rem 2.5rem;
+        color: #000000;
+        border: 3px solid #776e62;
+        -webkit-transition: padding 0.3s ease-in-out;
+        transition: padding 0.3s ease-in-out;
+        }
+
+        .bn47:before {
+        content: "";
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        background-color: #ffffff;
+        border-right: 3px solid #ffffff;
+        border-bottom: 3px solid #ffffff;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        }
+
+        .bn47:hover {
+        padding: 0.75rem 2.25rem;
+        }
+
+        .bn47:hover:before {
+        top: 0;
+        left: 0;
+        }
+        .foot {
+            text-align: center;
+            position: fixed;
+            padding: 10px 10px 0px 10px;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/
+            height: 40px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>RANDOM COUNTRY</h1>
+    <div id="app"></div>
+    <script type="text/babel">
+        function refreshPage(){
+    window.location.reload();
+    }
+    const CountryInfo = () => {
+      const [countryData, setCountryData] = React.useState({});
+      const [isLoading, setIsLoading] = React.useState(true);
+
+      React.useEffect(() => {
+        setIsLoading(true);
+        fetch("https://restcountries.com/v3.1/all")
+          .then((response) => response.json())
+          .then((data) => {
+            if (Array.isArray(data) && data.length > 0) {
+              // Parse the response data to extract the flag image, country name, population, and currency
+              const country = data[Math.floor(Math.random() * data.length)];
+              const flag = country.flags.png;
+              const name = country.name.common;
+              const capital = country.capital?.[0] || "Unknown";
+              const population = country.population;
+              const currency = Object.keys(country.currencies)[0];
+
+              // Update the state variables with the parsed data
+              setCountryData({ flag, name,capital, population, currency });
+            } else {
+              console.log("Invalid data format:", data);
+            }
+            setIsLoading(false);
+          })
+          .catch((error) => {
+            console.log("Error:", error);
+            setIsLoading(false);
+          });
+      }, []);
+
+      if (isLoading) {
+        return <p>Loading...</p>;
+      }
+
+      return (
+            <div className='container'>
+            {countryData.flag && <img src={countryData.flag} alt="Flag" width={250}/>}
+                <div className="text">
+                    <h2 >{countryData.name}</h2>
+                    <h3 >{countryData.capital}</h3>
+                    <p >Population: {countryData.population}</p>
+                    <p >Currency: {countryData.currency}</p>
+                    <button type='reset' className="bn47" onClick={()=>{location.reload();}} >Dice</button>
+                </div>
+            </div>
+      );
+    };
+
+    const rootElement = ReactDOM.createRoot(document.getElementById('app'));
+    rootElement.render(<CountryInfo />);
+    </script>
+    <div>
+        <footer class="foot">&copy; Copyright 2023 @BalaTheDeveloperOps  </footer>
+    </div>
+    
+</body>
+</html>
