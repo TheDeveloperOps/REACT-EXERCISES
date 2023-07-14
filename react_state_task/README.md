@@ -335,3 +335,4 @@
 
 *Output of the above*
 ![Alt text](image-6.png)
+![country API](https://github.com/TheDeveloperOps/REACT-EXERCISES/assets/82383377/df72ef1f-ca78-460f-9d25-e6ff4ac2660b)
